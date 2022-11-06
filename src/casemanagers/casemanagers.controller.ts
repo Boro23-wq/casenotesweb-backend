@@ -87,7 +87,7 @@ export class CasemanagersController {
 
   @Delete(':id')
   @ApiCreatedResponse({ type: CasemanagerEntity })
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.casemanagersService.remove(id);
+  async remove(@Param('id', ParseIntPipe) id: number) {
+    return await this.casemanagersService.remove(id);
   }
 }

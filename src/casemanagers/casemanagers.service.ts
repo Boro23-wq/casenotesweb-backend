@@ -42,8 +42,8 @@ export class CasemanagersService {
     });
   }
 
-  remove(id: number) {
-    return this.prisma.caseManager.delete({
+  async remove(id: number) {
+    return await this.prisma.caseManager.delete({
       where: { id },
     });
   }
