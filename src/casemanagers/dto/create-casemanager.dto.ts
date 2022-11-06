@@ -31,6 +31,6 @@ export class CreateCasemanagerDto {
 
   @IsString()
   @IsOptional()
-  @ApiProperty()
-  profileUrl: string;
+  @ApiProperty({ required: false, nullable: true })
+  profileUrl: string | null;
 }
