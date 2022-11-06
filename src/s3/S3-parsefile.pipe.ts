@@ -11,8 +11,13 @@ export class S3ParseFile implements PipeTransform {
     file: Express.Multer.File,
     metadata: ArgumentMetadata,
   ): Express.Multer.File {
-    if (file === undefined || file === null) {
-      throw new BadRequestException('Validation failed (file expected).');
+    // 1MB ~ 1000KB
+    const oneMb = 1000;
+
+    if (file === undefined || file === null || file.size < oneMb) {
+      throw new BadRequestException(
+        'File expected and file should be less than 1MB.',
+      );
     }
 
     return file;
