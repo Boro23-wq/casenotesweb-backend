@@ -110,6 +110,15 @@ export class CasesService {
     });
   }
 
+  closeACase(id: number) {
+    return this.prisma.patientCase.update({
+      where: { id },
+      data: {
+        status: 'Inactive',
+      },
+    });
+  }
+
   removeNote(id: number, noteId: number) {
     return this.prisma.note.delete({
       where: {

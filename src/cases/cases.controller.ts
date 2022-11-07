@@ -64,6 +64,12 @@ export class CasesController {
     return this.casesService.createMilestone(id, createMilestoneDto);
   }
 
+  @Post(':id/close')
+  @ApiCreatedResponse({ type: MilestoneEntity })
+  closeACase(@Param('id', ParseIntPipe) id: number) {
+    return this.casesService.closeACase(id);
+  }
+
   @Get()
   @ApiCreatedResponse({ type: CaseEntity, isArray: true })
   async findAll(
