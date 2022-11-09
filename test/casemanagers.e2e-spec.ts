@@ -86,7 +86,9 @@ describe('Case Manager Controller (E2E)', () => {
     });
 
     it('Fails to return non existing case manager.', async () => {
-      const { status } = await request(app.getHttpServer()).get(`/articles/40`);
+      const { status } = await request(app.getHttpServer()).get(
+        `/casemanagers/40`,
+      );
 
       expect(status).toBe(404);
     });
