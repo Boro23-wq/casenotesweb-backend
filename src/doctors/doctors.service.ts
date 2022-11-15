@@ -26,6 +26,10 @@ export class DoctorsService {
     return await this.prisma.doctor.findUnique({ where: { id } });
   }
 
+  async findOneByEmail(email) {
+    return await this.prisma.doctor.findUnique({ where: { email } });
+  }
+
   update(id: number, updateDoctorDto: UpdateDoctorDto) {
     return this.prisma.doctor.update({
       where: { id },

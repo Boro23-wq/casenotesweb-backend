@@ -53,6 +53,20 @@ export class CasemanagersController {
   }
 
   @Get()
+  @ApiCreatedResponse({ type: CasemanagerEntity })
+  async findOneByEmail(@Query('email') email: string) {
+    const caseManager = await this.casemanagersService.findOneByEmail(email);
+
+    if (!caseManager) {
+      throw new NotFoundException(
+        `Case manager with email: ${email} not found.`,
+      );
+    } else {
+      return caseManager;
+    }
+  }
+
+  @Get()
   @ApiCreatedResponse({ type: CasemanagerEntity, isArray: true })
   async findAll(
     @Query('skip', new DefaultValuePipe(0)) skip: string,

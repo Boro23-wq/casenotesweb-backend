@@ -93,7 +93,7 @@ describe('Case Manager Controller (E2E)', () => {
       expect(status).toBe(404);
     });
 
-    it('Fails to return article with invalid id type.', async () => {
+    it('Fails to return case managers with invalid id type.', async () => {
       const { status, body } = await request(app.getHttpServer()).get(
         `/articles/invalid-id`,
       );

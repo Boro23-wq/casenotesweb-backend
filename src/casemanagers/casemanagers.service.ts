@@ -26,6 +26,10 @@ export class CasemanagersService {
     return await this.prisma.caseManager.findUnique({ where: { id } });
   }
 
+  async findOneByEmail(email) {
+    return await this.prisma.caseManager.findUnique({ where: { email } });
+  }
+
   update(id: number, updateCasemanagerDto: UpdateCasemanagerDto) {
     return this.prisma.caseManager.update({
       where: { id },
