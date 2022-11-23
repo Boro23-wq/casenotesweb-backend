@@ -11,7 +11,16 @@ import { SolutionsModule } from './solutions/solutions.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [CasemanagersModule, CasesModule, DoctorsModule, PatientsModule, NotesModule, MilestonesModule, SolutionsModule, PrismaModule],
+  imports: [
+    CasemanagersModule,
+    CasesModule,
+    DoctorsModule,
+    PatientsModule,
+    NotesModule,
+    MilestonesModule,
+    SolutionsModule,
+    PrismaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

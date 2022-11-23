@@ -43,8 +43,8 @@ export class CasemanagersController {
   @S3ImageFile('profile', true)
   @ApiCreatedResponse({ type: CasemanagerEntity })
   async uploadFile(
-    @UploadedFile(S3ParseFile) file: Express.Multer.File,
     @Param('id', ParseIntPipe) id: number,
+    @UploadedFile(S3ParseFile) file: Express.Multer.File,
   ) {
     const uploadedFile = await this.s3Service.uploadFile(file);
     const url = uploadedFile.Location;
@@ -53,29 +53,34 @@ export class CasemanagersController {
   }
 
   @Get()
-  @ApiCreatedResponse({ type: CasemanagerEntity })
-  async findOneByEmail(@Query('email') email: string) {
-    const caseManager = await this.casemanagersService.findOneByEmail(email);
-
-    if (!caseManager) {
-      throw new NotFoundException(
-        `Case manager with email: ${email} not found.`,
-      );
-    } else {
-      return caseManager;
-    }
-  }
-
-  @Get()
   @ApiCreatedResponse({ type: CasemanagerEntity, isArray: true })
   async findAll(
     @Query('skip', new DefaultValuePipe(0)) skip: string,
     @Query('take', new DefaultValuePipe(10)) take: string,
+    @Query('email') email?: string,
   ) {
+    if (email) {
+      const caseManager = await this.casemanagersService.findOneByEmail(email);
+      if (!caseManager) {
+        throw new NotFoundException(
+          `Case manager with email: ${email} not found.`,
+        );
+      } else {
+        return caseManager;
+      }
+    }
+
     return this.casemanagersService.findAll({
       skip: Number(skip),
       take: Number(take),
     });
+  }
+
+  @Get(':email/cases')
+  @ApiCreatedResponse({ type: CasemanagerEntity })
+  async findAllCases(@Param('email') email: string) {
+    const cases = await this.casemanagersService.findAllCases(email);
+    return cases;
   }
 
   @Get(':id')
