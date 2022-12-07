@@ -13,13 +13,13 @@ import {
   DefaultValuePipe,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { CreateMilestoneDto } from 'src/milestones/dto/create-milestone.dto';
-import { MilestoneEntity } from 'src/milestones/entities/milestone.entity';
-import { CreateNoteDto } from 'src/notes/dto/create-note.dto';
-import { NoteEntity } from 'src/notes/entities/note.entity';
-import { PrismaClientExceptionFilter } from 'src/primsa-client-exception/prisma-client-exception.filter';
-import { CreateSolutionDto } from 'src/solutions/dto/create-solution.dto';
-import { SolutionEntity } from 'src/solutions/entities/solution.entity';
+import { CreateMilestoneDto } from '../milestones/dto/create-milestone.dto';
+import { MilestoneEntity } from '../milestones/entities/milestone.entity';
+import { CreateNoteDto } from '../notes/dto/create-note.dto';
+import { NoteEntity } from '../notes/entities/note.entity';
+import { PrismaClientExceptionFilter } from '../primsa-client-exception/prisma-client-exception.filter';
+import { CreateSolutionDto } from '../solutions/dto/create-solution.dto';
+import { SolutionEntity } from '../solutions/entities/solution.entity';
 import { CasesService } from './cases.service';
 import { CreateCaseDto } from './dto/create-case.dto';
 import { UpdateCaseDto } from './dto/update-case.dto';

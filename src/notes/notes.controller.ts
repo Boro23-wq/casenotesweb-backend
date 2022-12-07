@@ -13,7 +13,7 @@ import {
   DefaultValuePipe,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { PrismaClientExceptionFilter } from 'src/primsa-client-exception/prisma-client-exception.filter';
+import { PrismaClientExceptionFilter } from '../primsa-client-exception/prisma-client-exception.filter';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 import { NoteEntity } from './entities/note.entity';

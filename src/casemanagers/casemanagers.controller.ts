@@ -14,15 +14,15 @@ import {
   DefaultValuePipe,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { PrismaClientExceptionFilter } from 'src/primsa-client-exception/prisma-client-exception.filter';
 import { CasemanagersService } from './casemanagers.service';
 import { CreateCasemanagerDto } from './dto/create-casemanager.dto';
 import { UpdateCasemanagerDto } from './dto/update-casemanager.dto';
 import { CasemanagerEntity } from './entities/casemanager.entity';
 import { Express } from 'express';
-import { S3Service } from 'src/s3/S3.service';
-import { S3ImageFile } from 'src/s3/S3-file.decorator';
-import { S3ParseFile } from 'src/s3/S3-parsefile.pipe';
+import { PrismaClientExceptionFilter } from '../primsa-client-exception/prisma-client-exception.filter';
+import { S3Service } from '../s3/S3.service';
+import { S3ImageFile } from '../s3/S3-file.decorator';
+import { S3ParseFile } from '../s3/S3-parsefile.pipe';
 
 @Controller('casemanagers')
 @ApiTags('casemanagers')
