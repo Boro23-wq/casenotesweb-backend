@@ -6,8 +6,8 @@ export class S3Service {
   AWS_S3_BUCKET = process.env.AWS_BUCKET_NAME;
 
   s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.ACCESS_KEY_ID_AWS,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY_AWS,
   });
 
   async uploadFile(file) {

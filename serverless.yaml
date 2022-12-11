@@ -1,0 +1,30 @@
+service: casenotesweb-backend
+
+useDotenv: true
+
+plugins:
+  - serverless-offline
+
+package:
+  exclude:
+    - node_modules/**
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+
+    ACCESS_KEY_ID_AWS: ${env:ACCESS_KEY_ID_AWS}
+    SECRET_ACCESS_KEY_AWS: ${env:SECRET_ACCESS_KEY_AWS}
+
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
