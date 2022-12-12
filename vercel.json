@@ -1,7 +1,9 @@
 {
   "version": 2,
   "env": {
-    "DATABASE_URL": "@DATABASE_URL"
+    "DATABASE_URL": "@DATABASE_URL",
+    "ACCESS_KEY_ID_AWS": "@ACCESS_KEY_ID_AWS",
+    "SECRET_ACCESS_KEY_AWS": "@SECRET_ACCESS_KEY_AWS"
   },
   "builds": [
     {
