@@ -36,7 +36,7 @@ export class DoctorsController {
   async findAll(
     @Query('skip', new DefaultValuePipe(0)) skip: string,
     @Query('take', new DefaultValuePipe(10)) take: string,
-    @Query('email') email: string,
+    @Query('email') email?: string,
   ) {
     if (email) {
       const doctor = await this.doctorsService.findOneByEmail(email);

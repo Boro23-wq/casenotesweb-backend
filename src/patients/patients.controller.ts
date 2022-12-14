@@ -36,7 +36,17 @@ export class PatientsController {
   async findAll(
     @Query('skip', new DefaultValuePipe(0)) skip: string,
     @Query('take', new DefaultValuePipe(10)) take: string,
+    @Query('email') email?: string,
   ) {
+    if (email) {
+      const patient = await this.patientsService.findOneByEmail(email);
+      if (!patient) {
+        throw new NotFoundException(`Patient with email: ${email} not found.`);
+      } else {
+        return patient;
+      }
+    }
+
     return this.patientsService.findAll({
       skip: Number(skip),
       take: Number(take),

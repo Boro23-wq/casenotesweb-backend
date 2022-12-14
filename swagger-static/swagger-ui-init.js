@@ -1612,6 +1612,14 @@ window.onload = function() {
               "schema": {
                 "type": "string"
               }
+            },
+            {
+              "name": "email",
+              "required": true,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
             }
           ],
           "responses": {
